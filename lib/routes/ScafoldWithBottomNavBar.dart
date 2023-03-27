@@ -82,7 +82,7 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
             type: BottomNavigationBarType.fixed,
             currentIndex: _currentIndex,
             items: widget.tabs,
-            iconSize: SizeConfig.safeBlockHorizontal! * 7.5,
+            iconSize: SizeConfig.safeBlockHorizontal! * 8,
             onTap: (index) => _onItemTapped(context, index),
             
           ),

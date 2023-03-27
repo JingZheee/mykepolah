@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:go_router/go_router.dart';
+import 'package:mykepolah/pages/forums/community.dart';
+
+import 'package:iconsax/iconsax.dart';
+import 'package:mykepolah/pages/forums/update.dart';
 import 'package:mykepolah/roots/forum.dart';
 import 'package:mykepolah/roots/home.dart';
 import 'package:mykepolah/roots/profile.dart';
@@ -9,8 +12,9 @@ import 'package:mykepolah/routes/ScafoldWithBottomNavBar.dart';
 import 'package:mykepolah/tools/SizeConfig.dart';
 
 void main() {
-  runApp(MyApp()
-  );
+  runApp(MaterialApp(
+    home: MyApp()
+  ));
 }
 
 
@@ -23,32 +27,32 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
+    SizeConfig().init(context);
     final tabs = [
       ScaffoldWithNavBarTabItem(
         initialLocation: '/home',
-        icon: Container(padding: EdgeInsets.only(right: SizeConfig.safeBlockVertical! * 0),child: Icon(Icons.home_outlined)),
+        icon: Container(child: Icon(Icons.home_outlined)),
         label: 'Home',
       ),
       ScaffoldWithNavBarTabItem(
         initialLocation: '/forum',
-        icon: Container(padding: EdgeInsets.only(right: SizeConfig.safeBlockVertical! * 5),child: Icon(Icons.calendar_month_outlined)),
+        icon: Container(padding: EdgeInsets.only(right: SizeConfig.safeBlockHorizontal! * 13),child: Icon(Iconsax.people)),
         label: 'Forum',
       ),
       ScaffoldWithNavBarTabItem(
         initialLocation: '/reported',
-        icon: Container(padding: EdgeInsets.only(left: SizeConfig.safeBlockVertical! * 5),child: Icon(Icons.sticky_note_2_outlined)),
+        icon: Container(padding: EdgeInsets.only(left: SizeConfig.safeBlockHorizontal! * 13),child: Icon(Icons.hourglass_top)),
         label: 'Reported',
       ),
       ScaffoldWithNavBarTabItem(
         initialLocation: '/profile',
-        icon: Container(padding: EdgeInsets.symmetric(horizontal: 10),child: Icon(Icons.person_2_outlined)),
+        icon: Container(child: Icon(Icons.person_2_outlined)),
         label: 'Profile',
       ),
       
     ];
-    final goRouter = GoRouter(
-      initialLocation: '/home',
+    final GoRouter goRouter = GoRouter(
+      initialLocation: '/forum',
       navigatorKey: _rootNavigatorKey,
       debugLogDiagnostics: true,
       routes: [
@@ -73,7 +77,20 @@ class MyApp extends StatelessWidget {
                 key: state.pageKey,
                 child: Forum(),
                 ),
+                routes: [
+                  GoRoute(
+                    path: 'community',
+                    builder: (context, state) => const Community(),
+                    routes: [
+                      GoRoute(
+                        path: 'update',
+                        builder: (context, state) => const Update(),
+                      )
+                    ]
+                )
+              ]
             ),
+            
             //Resources page
             GoRoute(
               path: '/reported',
@@ -96,7 +113,7 @@ class MyApp extends StatelessWidget {
     );
 
     return MaterialApp.router(
-       routerConfig: goRouter,
+      routerConfig: goRouter,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.indigo),
     );

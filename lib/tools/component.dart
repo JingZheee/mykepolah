@@ -57,9 +57,9 @@ class TopBar extends StatelessWidget {
 
 //Sliding List View
 class SlideBar extends StatefulWidget {
-  SlideBar({super.key, required this.categories});
+  SlideBar({super.key, required this.categories, required this.onCountChanged});
   List<String> categories;
-  // final Function(int) onCountChanged;
+  final Function(int) onCountChanged;
   
   @override
   State<SlideBar> createState() => _SlideBarState();
@@ -103,7 +103,7 @@ class _SlideBarState extends State<SlideBar> {
         onTap: () {
           setState(() {
             selectedIndex = index;
-            // widget.onCountChanged(selectedIndex);
+            widget.onCountChanged(selectedIndex);
           });
         },
         child: Stack(
