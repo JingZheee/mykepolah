@@ -36,7 +36,7 @@ class ForumCard extends StatelessWidget {
         ),
         child: InkWell(
           onTap: () {
-            context.go('/forum/community');
+            context.go('/forum/community/$name');
           },
           child: Column(
             children: [
@@ -44,7 +44,7 @@ class ForumCard extends StatelessWidget {
               Image.asset('assets/selangor/huluselangor.png'),
               SizedBox(height: SizeConfig.blockSizeHorizontal! * 2),
               Text(
-                'Hulu Selangor',
+                '$name',
                 style: TextStyle(
                   color: pricolor,
                   fontWeight: FontWeight.bold,

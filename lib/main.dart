@@ -3,13 +3,16 @@ import 'package:go_router/go_router.dart';
 import 'package:mykepolah/pages/forums/community.dart';
 
 import 'package:iconsax/iconsax.dart';
+import 'package:mykepolah/pages/forums/forum_page.dart';
 import 'package:mykepolah/pages/forums/update.dart';
+import 'package:mykepolah/pages/reported/progress_page.dart';
 import 'package:mykepolah/roots/forum.dart';
-import 'package:mykepolah/roots/home.dart';
+import 'package:mykepolah/roots/home_page.dart';
 import 'package:mykepolah/roots/profile.dart';
 import 'package:mykepolah/roots/reported.dart';
 import 'package:mykepolah/routes/ScafoldWithBottomNavBar.dart';
 import 'package:mykepolah/tools/SizeConfig.dart';
+import 'package:mykepolah/tools/forumCard.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -52,7 +55,7 @@ class MyApp extends StatelessWidget {
       
     ];
     final GoRouter goRouter = GoRouter(
-      initialLocation: '/forum',
+      initialLocation: '/home',
       navigatorKey: _rootNavigatorKey,
       debugLogDiagnostics: true,
       routes: [
@@ -67,7 +70,7 @@ class MyApp extends StatelessWidget {
               path: '/home',
               pageBuilder: (context, state) => NoTransitionPage(
                 key: state.pageKey,
-                child: const Home(),
+                child: const HomePage(),
                 ),
             ),
             //Sessions page
@@ -79,12 +82,20 @@ class MyApp extends StatelessWidget {
                 ),
                 routes: [
                   GoRoute(
-                    path: 'community',
-                    builder: (context, state) => const Community(),
+                    path: 'community/:area',
+                    builder: (context, state) => Community(
+                      area: state.params["area"]!
+                    ),
                     routes: [
                       GoRoute(
                         path: 'update',
                         builder: (context, state) => const Update(),
+                        routes: [
+                          GoRoute(
+                            path: 'discussion',
+                            builder: (context, state) => const ForumPage(),
+                          )
+                        ]
                       )
                     ]
                 )
@@ -96,15 +107,21 @@ class MyApp extends StatelessWidget {
               path: '/reported',
               pageBuilder: (context, state) => NoTransitionPage(
                 key: state.pageKey,
-                child: const Reported(),
+                child: const ReportsPage(),
                 ),
+                routes: [
+                  GoRoute(
+                    path: 'progress',
+                    builder: (context, state) => const ProgressPage(),
+                  )
+                ]
             ),
             //Profile page
             GoRoute(
               path: '/profile',
               pageBuilder: (context, state) => NoTransitionPage(
                 key: state.pageKey,
-                child: const Profile(),
+                child: const ProfilePage(),
                 ),
             ),
           ]

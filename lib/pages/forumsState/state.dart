@@ -16,7 +16,7 @@ class Selangor extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             ForumCard(image: 'assets/selangor/huluselangor.png', name: 'Hulu Selangor'),
-            ForumCard(image: 'assets/selangor/huluselangor.png', name: 'Hulu Selangor')
+            ForumCard(image: 'assets/selangor/huluselangor.png', name: 'Perak')
           ],
         ),
         SizedBox(height: SizeConfig.blockSizeHorizontal! * 3 ,),
@@ -51,7 +51,7 @@ class Perak extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             ForumCard(image: 'assets/selangor/huluselangor.png', name: 'Hulu Selangor'),
-            ForumCard(image: 'assets/selangor/huluselangor.png', name: 'Hulu Selangor')
+            ForumCard(image: 'assets/selangor/huluselangor.png', name: 'Perak')
           ],
         ),
         SizedBox(height: SizeConfig.blockSizeHorizontal! * 3 ,),
