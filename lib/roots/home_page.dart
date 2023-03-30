@@ -127,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                         description: "This happened for the 5th time this month",
                         likes: 129,
                         onTap: () {
-                          Navigator.pushNamed(context, '/2');
+                          context.go('/forum/community/Hulu Selangor/update/discussion');
                         },
                       ),
                       SizedBox(height: ScreenSize.vertical! * 3),
@@ -142,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                         description: "Luckily I noticed it before driving into it",
                         likes: 69,
                         onTap: () {
-                          Navigator.pushNamed(context, '/2');
+                          context.go('/forum/community/Hulu Selangor/update/discussion');
                         },
                       ),
                     ],

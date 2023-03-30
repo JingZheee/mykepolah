@@ -41,7 +41,10 @@ class ForumCard extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: SizeConfig.blockSizeHorizontal! * 5),
-              Image.asset('assets/selangor/huluselangor.png'),
+              SizedBox(
+                height: SizeConfig.blockSizeHorizontal! * 37,
+                child: Image.asset('$image')
+              ),
               SizedBox(height: SizeConfig.blockSizeHorizontal! * 2),
               Text(
                 '$name',

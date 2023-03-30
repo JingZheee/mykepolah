@@ -38,6 +38,10 @@ dependencies:
   image_cropper: ^3.0.2
   sticky_headers: ^0.3.0+2
   flutter_sticky_widgets: ^0.0.3
+  google_maps_flutter: ^2.2.5
+  location: ^4.4.0
+  flutter_svg: ^2.0.4
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -59,6 +63,9 @@ flutter:
     - assets/selangor/
     - assets/pothole/
     - assets/
+    - assets/johor/
+    - assets/penang/
+    - assets/images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

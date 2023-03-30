@@ -46,7 +46,7 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
           child: FloatingActionButton( //Floating action button on Scaffold
           backgroundColor: Color(0XFF47466D),
           onPressed: (){
-              //code to execute on button press
+              context.go('/report');
           },
           child: SizedBox(
             height: SizeConfig.blockSizeHorizontal! * 10,

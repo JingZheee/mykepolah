@@ -39,10 +39,9 @@ class _ForumState extends State<Forum> {
                 ),
               ),
               SizedBox(height: SizeConfig.blockSizeHorizontal! * 3 ,),
-              SlideBar(categories: ['Selangor', 'Perak', 'Sabah'], onCountChanged: (index){
+              SlideBar(categories: ['Selangor', 'Johor', 'Penang'], onCountChanged: (index){
                 setState(() {
                   num = index;
-                  print(num);
                 });
               },
               ),
@@ -55,7 +54,7 @@ class _ForumState extends State<Forum> {
                       Container(
                         width: SizeConfig.blockSizeHorizontal! * 80,
                         padding: EdgeInsets.only(top: SizeConfig.blockSizeHorizontal! * 1.5, ),
-                        child: (num == 0) ? Selangor() : Perak()
+                        child: (num == 0) ? Selangor() : (num == 1) ? Johor() : Penang()
                       ),
                     ],
                   ),

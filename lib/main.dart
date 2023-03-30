@@ -9,6 +9,7 @@ import 'package:mykepolah/pages/reported/progress_page.dart';
 import 'package:mykepolah/roots/forum.dart';
 import 'package:mykepolah/roots/home_page.dart';
 import 'package:mykepolah/roots/profile.dart';
+import 'package:mykepolah/roots/report.dart';
 import 'package:mykepolah/roots/reported.dart';
 import 'package:mykepolah/routes/ScafoldWithBottomNavBar.dart';
 import 'package:mykepolah/tools/SizeConfig.dart';
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
       
     ];
     final GoRouter goRouter = GoRouter(
-      initialLocation: '/home',
+      initialLocation: '/report',
       navigatorKey: _rootNavigatorKey,
       debugLogDiagnostics: true,
       routes: [
@@ -123,6 +124,19 @@ class MyApp extends StatelessWidget {
                 key: state.pageKey,
                 child: const ProfilePage(),
                 ),
+            ),
+            GoRoute(
+              path: '/report',
+              pageBuilder: (context, state) => NoTransitionPage(
+                key: state.pageKey,
+                child: const CategoryReport(),
+                ),
+                routes: [
+                  GoRoute(
+                    path: 'makeReport',
+                    builder: (context, state) => const MakingReport(),
+                  )
+                ]
             ),
           ]
         )
